@@ -37,7 +37,7 @@ int main()
                 //fourth child
                 lseek(fd,index + 3,SEEK_SET);
                 read(fd, &byte, 1);
-                printf("%c\n", byte);
+                printf("%c", byte);
                 return 0;
             }
             //get more input. look to end of else/if group.
@@ -47,24 +47,25 @@ int main()
             //first child
             lseek(fd,index,SEEK_SET);
             read(fd, &byte, 1);
-            printf("%c\n", byte);
+            printf("%c", byte);
             return 0;
         }
         else if(child1 > 0 && child2 == 0) {
             //second child
             lseek(fd,index + 1,SEEK_SET);
             read(fd, &byte, 1);
-            printf("%c\n", byte);
+            printf("%c", byte);
             return 0;
         }
         else {
             //third child
             lseek(fd,index + 2,SEEK_SET);
             read(fd, &byte, 1);
-            printf("%c\n", byte);
+            printf("%c", byte);
             return 0;
             
         }
+        cout << endl;
         //get input again, since this is the parent process
         scanf(" %c",&input);
         scanf(" %d",&index);
