@@ -1,3 +1,7 @@
+//Mini Project 2
+//MS-Shell
+//Evan Jackson
+
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
