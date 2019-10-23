@@ -43,8 +43,6 @@ int main()
                 //return kills child
                 return 0;
             }
-            //get more input. look to end of else/if group.
-            
         }
         else if(child1 == 0&& child2 > 0) {
             //first child
