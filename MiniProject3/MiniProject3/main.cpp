@@ -23,13 +23,16 @@ int sum[THREAD_COUNT] = {0};
 int a[ARRAY_SIZE];
 pthread_mutex_t the_mutex;
 
+//function to create a sum for the thread partition
 void* partial_sum(void* arg) {
     int thread_pid = pid++;
     for (int i = thread_pid * (ARRAY_SIZE / THREAD_COUNT);
          i < (thread_pid + 1) * (ARRAY_SIZE / THREAD_COUNT);
          i++){
+        //lock so that there is no interference
         pthread_mutex_lock(&the_mutex);
         sum[thread_pid] += a[i];
+        //unlock
         pthread_mutex_unlock(&the_mutex);
     }
     return sum;
