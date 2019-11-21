@@ -16,8 +16,36 @@
 using namespace std;
 
 // If found, update boolean
-static bool findPage(int x,int table[], bool secondChance[],int frames)
+static bool findPage(int x,int table[], bool secondChance[],int frames);
   
+// Updates the page in memory and returns the index
+static int replacePage(int x,int table[], bool secondChance[],int frames,int index);
+
+static int secondFaults(vector <int> reference, int frames);
+  
+// Function to find page faults using FIFO
+int fifoFaults(vector<int>pages,int capacity);
+
+// function to find page faults using LRU
+int lruFaults(vector<int>pages, int capacity);
+  
+// Driver code
+int main()
+{
+    vector<int> reference;
+    for(int i = 0; i < 10000; i++){
+        reference.push_back(rand() % 100);
+    }
+    int frames = 20;
+    int fifofaults = fifoFaults(reference, frames); //output = 7962
+    int secondfaults = secondFaults(reference, frames); //output = 14
+    int lrufaults;
+    printf("Page faults in FIFO: %d\n", fifofaults);
+    printf("Page faults in Second Chance: %d\n", secondfaults);
+    return 0;
+}
+
+static bool findPage(int x,int table[], bool secondChance[],int frames)
 {
     for(int i = 0; i < frames; i++)
     {
@@ -35,11 +63,8 @@ static bool findPage(int x,int table[], bool secondChance[],int frames)
     // Return 'false' so that a page for replacement is selected
     // as he reuested page doesn't exist in memory
     return false;
-      
 }
-  
-  
-// Updates the page in memory and returns the index
+
 static int replacePage(int x,int table[], bool secondChance[],int frames,int index)
 {
     while(true)
@@ -62,7 +87,7 @@ static int replacePage(int x,int table[], bool secondChance[],int frames,int ind
         index = (index + 1) % frames;
     }
 }
-  
+
 static int secondFaults(vector<int>reference, int frames)
 {
     int index = 0, pagefaults = 0;
@@ -88,8 +113,7 @@ static int secondFaults(vector<int>reference, int frames)
     }
     return pagefaults;
 }
-  
-// Function to find page faults using FIFO
+
 int fifoFaults(vector<int>pages,int capacity)
 {
     //unordered set to quickly check if the
@@ -144,21 +168,21 @@ int fifoFaults(vector<int>pages,int capacity)
             }
         }
     }
-  
     return page_faults;
 }
-  
-// Driver code
-int main()
+
+int lruFaults(vector<int>pages, int capacity)
 {
-    vector<int> reference;
-    for(int i = 0; i < 10000; i++){
-        reference.push_back(rand() % 100);
+    int pageFaults = 0, cnt = 0;
+    //List current pages in use
+    unordered_set<int> table;
+    
+    
+    for(int i = 0; i < pages.size(); i++){
+        //inseret if not present
+        
     }
-    int frames = 20;
-    int fifofaults = fifoFaults(reference, frames); //output = 7962
-    int secondfaults = secondFaults(reference, frames); //output = 14
-    printf("Page faults in FIFO: %d\n", fifofaults);
-    printf("Page faults in Second Chance: %d\n", secondfaults);
-    return 0;
+    
+    
+    return pageFaults;
 }
