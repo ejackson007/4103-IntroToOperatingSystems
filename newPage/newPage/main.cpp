@@ -1,10 +1,12 @@
+//Evan Jackson
+//November 24, 2019
+//Mini project 4 & 5
 //
-//  main.cpp
-//  newPage
-//
-//  Created by Evan Jackson on 11/20/19.
-//  Copyright © 2019 Evan Jackson. All rights reserved.
-//
+//The goal of this project is to emulate the a page replacement algorithm. The program
+//also uses no advance data structures, using only iostream and fstream in std. The
+//program reads in an instruction of 0, 1, or 2, as well as an address in hex. The
+//program will then systematically put the page into the Inverted Page Table,
+//removing pages as needed.
 
 #include <iostream>
 #include <fstream>
@@ -25,27 +27,21 @@ bool searchTable(int address);
 
 int main(int argc, const char * argv[]) {
     int command, address, age = 0;
-    //int t = 456;
-    //cout << hex << t << endl;
         
     ifstream infile;
     infile.open("spice.txt");
     
     while(!infile.eof()){
-        //for(int i = 0; i < SIZE + 3; i++){
         infile >> command >> hex >> address;
-        //cout << "address is " << address << endl;
         updateTable(command, address, age);
         age++;
     }
     
-    //    for(int i = 0; i < SIZE; i++)
-    //        cout << IVT[i][0] << endl;
-    //
     for(int i = 0; i < SIZE; i++){
-        printf("INDEX: %d\n\tADDRESS:%d\n\tAGE:%d\n\n", i, IVT[i][0], IVT[i][1]);
+        printf("FRAME:%d\n\tADDRESS:%d\n\tTIME INSERTED:%d\n\n", i, IVT[i][0], IVT[i][1]);
     }
-    printf("FAULTS:%d", faults);
+    
+    printf("FAULTS:%d\n", faults);
     return 0;
 }
 
@@ -86,7 +82,7 @@ void doCommand(int address, int command, int age){
         for(int i = 0; i < SIZE; i++){
             //set reference back to 0, and find which one to replace
             IVT[i][4] = 0;
-            if(IVT[i][1] < min){
+            if(IVT[i][1] < min && IVT[i][4] == 0){
                 min = IVT[i][1];
                 minLocation = i;
             }
