@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		207C7BA1238D60AD0074B812 /* output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
 		20A8122D238631690058D6CE /* newPage */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = newPage; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A81230238631690058D6CE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		20A81237238633A10058D6CE /* spice.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = spice.txt; path = ../../../Downloads/spice.txt; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 			children = (
 				20A81237238633A10058D6CE /* spice.txt */,
 				20A81230238631690058D6CE /* main.cpp */,
+				207C7BA1238D60AD0074B812 /* output.txt */,
 			);
 			path = newPage;
 			sourceTree = "<group>";

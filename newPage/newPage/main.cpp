@@ -30,6 +30,7 @@ int main(int argc, const char * argv[]) {
         
     ifstream infile;
     infile.open("spice.txt");
+
     
     while(!infile.eof()){
         infile >> command >> hex >> address;
