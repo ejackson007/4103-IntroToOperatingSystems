@@ -1,4 +1,4 @@
-//Evan Jackson
+//Evan Jackson & William Jarboe
 //November 24, 2019
 //Mini project 4 & 5
 //
@@ -38,7 +38,8 @@ int main(int argc, const char * argv[]) {
     }
     
     for(int i = 0; i < SIZE; i++){
-        printf("FRAME:%d\n\tADDRESS:%d\n\tTIME INSERTED:%d\n\n", i, IVT[i][0], IVT[i][1]);
+        printf("FRAME:%d\n\tADDRESS:%d\n\tFRAME NUMBER:%d\n", i, IVT[i][0], IVT[i][1]);
+        printf("\tVALID BIT: %d\n\tMODIFIED BIT: %d\n\tREFERENCE BIT: %d\n\n",IVT[i][2],IVT[i][3],IVT[i][4]);
     }
     
     printf("FAULTS:%d\n", faults);
@@ -81,11 +82,11 @@ void doCommand(int address, int command, int age){
         int minLocation = 0;
         for(int i = 0; i < SIZE; i++){
             //set reference back to 0, and find which one to replace
-            IVT[i][4] = 0;
             if(IVT[i][1] < min && IVT[i][4] == 0){
                 min = IVT[i][1];
                 minLocation = i;
             }
+            IVT[i][4] = 0;
         }
         //replace page and increment fault
         IVT[minLocation][0] = address;
